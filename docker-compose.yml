@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  e2e:
+    build: .
+    shm_size: 1g
+    environment:
+      - BASE_URL=${BASE_URL:-https://www.saucedemo.com/v1}
+      - STD_USER=${STD_USER:-standard_user}
+      - STD_PASS=${STD_PASS:-secret_sauce}
+      - LOCKED_USER=${LOCKED_USER:-locked_out_user}
+      - LOCKED_PASS=${LOCKED_PASS:-secret_sauce}
+
+      - HEADLESS=${HEADLESS:-true}
+
+      - TEST_SUITE=${TEST_SUITE:-all}
+
+      - PYTEST_ARGS=${PYTEST_ARGS:-}
+
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./traces:/app/traces

@@ -94,6 +94,12 @@ def page(playwright_context):
 
     page.close()
 
+@pytest.hookimpl(tryfirst=True)
+def pytest_collection_modifyitems(config, items):
+    for item in items:
+        if item.get_closest_marker("smoke"):
+            item.add_marker(pytest.mark.regression)
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
