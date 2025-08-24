@@ -13,8 +13,8 @@ class CheckoutInfoPage(BasePage):
         super().__init__(page)
         self.base_url = base_url
         self.first: Locator = page.locator("#first-name")
-        self.last:  Locator = page.locator("#last-name")
-        self.zip:   Locator = page.locator("#postal-code")
+        self.last: Locator = page.locator("#last-name")
+        self.zip: Locator = page.locator("#postal-code")
         self.continue_btn: Locator = page.locator("div.checkout_buttons > input")
 
     def fill_and_continue(self, first: str | None = None, last: str | None = None, zip_code: str | None = None):
