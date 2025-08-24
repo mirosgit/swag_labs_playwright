@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from tests.pages import (
     LoginPage,
@@ -19,6 +20,7 @@ def do_login(page, base_url, user, pwd):
 
 @allure.title("Login success and logout")
 @allure.story("Auth")
+@pytest.mark.smoke
 def test_login_success_and_logout(page, base_url):
     do_login(page, base_url, Users.STD_USER, Users.STD_PASS)
     inv = InventoryPage(page, base_url)
@@ -28,6 +30,7 @@ def test_login_success_and_logout(page, base_url):
 
 @allure.title("Inventory sorting by price asc/desc")
 @allure.story("Catalog")
+@pytest.mark.regression
 def test_inventory_sorting(page, base_url):
     do_login(page, base_url, Users.STD_USER, Users.STD_PASS)
     inv = InventoryPage(page, base_url)
@@ -45,6 +48,7 @@ def test_inventory_sorting(page, base_url):
 
 @allure.title("Add to cart and verify badge + items")
 @allure.story("Cart")
+@pytest.mark.smoke
 def test_add_to_cart_and_badge(page, base_url):
     do_login(page, base_url, Users.STD_USER, Users.STD_PASS)
     inv = InventoryPage(page, base_url)
@@ -63,6 +67,7 @@ def test_add_to_cart_and_badge(page, base_url):
 
 @allure.title("Full checkout flow")
 @allure.story("Checkout")
+@pytest.mark.regression
 def test_full_checkout_flow(page, base_url):
     do_login(page, base_url, Users.STD_USER, Users.STD_PASS)
     inv = InventoryPage(page, base_url)
@@ -90,6 +95,7 @@ def test_full_checkout_flow(page, base_url):
 
 @allure.title("Login failure of locked user shows error")
 @allure.story("Auth")
+@pytest.mark.regression
 def test_login_failure_locked_user(page, base_url):
     lp = LoginPage(page, base_url)
     lp.open()
