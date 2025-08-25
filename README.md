@@ -65,7 +65,7 @@ Artifacts are mapped to the host:
 
 ---
 
-### 3) GitHub Actions (CI/CD)
+### 2) GitHub Actions (CI/CD)
 
 1. Repo → **Settings → Actions → General → Allow all actions**.  
 2. (For public report) Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.  
